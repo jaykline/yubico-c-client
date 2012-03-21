@@ -75,7 +75,7 @@ ykclient_init (ykclient_t ** ykc)
   if (!p)
     return YKCLIENT_OUT_OF_MEMORY;
 
-  memset(p, 0, (sizeof (*p));
+  memset(p, 0, (sizeof (*p)));
 
   p->curl = curl_easy_init ();
   if (!p->curl)

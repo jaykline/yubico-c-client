@@ -463,6 +463,7 @@ ykclient_request (ykclient_t * ykc, const char *yubikey)
   char *user_agent = NULL;
   char *status;
   int out;
+  ykclient_server_response_t *serv_response = NULL;
 
   if (!url_template)
     url_template = "https://yubi.hpcmp.hpc.mil/wsapi/2.0/verify.php?id=%d&otp=%s";
@@ -606,6 +607,7 @@ ykclient_request (ykclient_t * ykc, const char *yubikey)
 
   if (curl_ret != CURLE_OK)
     {
+      fprintf(stderr, "Error with curl: %s\n", curl_easy_strerror(curl_ret));
       out = YKCLIENT_CURL_PERFORM_ERROR;
       goto done;
     }
@@ -616,8 +618,7 @@ ykclient_request (ykclient_t * ykc, const char *yubikey)
       goto done;
     }
 
-  ykclient_server_response_t *serv_response =
-    ykclient_server_response_init ();
+  serv_response = ykclient_server_response_init ();
   if (serv_response == NULL)
     {
       out = YKCLIENT_PARSE_ERROR;

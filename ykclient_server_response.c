@@ -2,6 +2,7 @@
  *
  * Written by Sebastien Martini <seb@dbzteam.org>.
  * Copyright (c) 2011-2012 Yubico AB
+ * Copyright (c) 2012 Secure Mission Solutions
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
